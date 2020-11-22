@@ -53,21 +53,3 @@ class Matrix:
 
     def make_triangular(self):
         pass
-
-
-
-
-mat_1 = Matrix([-1, 1, 3, 7], 2, 2)
-print(mat_1.create_matrix())
-
-mat_2 = Matrix([1, 2, 3, 0, 5, 6, 0, 0, 9], 3, 3)
-print(mat_2.create_matrix())
-
-mat_3 = Matrix([1, 3, 5, 4], 3, 3)
-print(mat_3.create_matrix())
-
-mat_4 = Matrix([1, 2, 3, 4, 5, 6], 1, 2)
-print(mat_4.create_matrix())
-print(mat_2.swap_rows(1, 2))
-print(mat_2.check_triangular())
-print(mat_1.check_triangular())
