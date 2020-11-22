@@ -22,12 +22,13 @@ class TestMatrix(unittest.TestCase):
 
     def test_swap_rows(self):
 
+        self.assertEqual(self.mat_1.swap_rows(0, 1), [[3, 7], [-1, 1]])
         self.assertEqual(self.mat_2.swap_rows(1, 2), [[1, 2, 3], [0, 0, 9], [0, 5, 6]])
 
     def test_check_triangular(self):
 
-        self.assertEqual(self.mat_2.check_triangular(), True)
         self.assertEqual(self.mat_1.check_triangular(), False)
+        self.assertEqual(self.mat_2.check_triangular(), True)
 
 if __name__ == '__main__':
     unittest.main()
