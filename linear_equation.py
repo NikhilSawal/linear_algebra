@@ -31,10 +31,3 @@ class LinearEquation:
                 for j in range(k + 1, self.nRows):
                     mat_1[i][j] = mat_1[i][j] - l_comp[i][k] * u_comp[k][i]
         return l_comp, u_comp
-
-
-eq_1 = LinearEquation([1, 2, 3, 1, 5, 6, 4, 3, 9], 3, 3)
-print(eq_1.LU_decomposition())
-
-eq_2 = LinearEquation([1, 2, 3, 1, 5, 6, 4, 3, 9, 4, 2, 6, 2 , 5, 4, 4], 4, 4)
-print(eq_2.LU_decomposition())
