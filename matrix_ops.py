@@ -1,7 +1,7 @@
 class Matrix:
     '''
-    This class contains several matrix related operations. To create an instance of this class
-    requires three arguments:
+    This class contains several matrix related operations.
+    To create an instance of this class requires three arguments:
     Args:
         param1 (list): array
         param2 (int): number_of_rows as int
@@ -74,7 +74,7 @@ class Matrix:
         matrix[x], matrix[y] = matrix[y], matrix[x]
         return matrix
 
-    def check_triangular(self):
+    def check_triangular(self, method):
         '''
         Checks if a matrix is triangular or not.
         Args:
@@ -87,14 +87,36 @@ class Matrix:
             bool: True if matrix is upper triangular.
         '''
         matrix = self.create_matrix()
-        if self.rows != self.columns:
+        if len(matrix) != len(matrix[0]):
             return "Not a square matrix"
-        else:
-            for i in range(1, self.rows):
-                for j in [j for j in range(self.columns) if j < i]:
-                    if matrix[i][j] > 0:
+
+        elif method == "lower":
+            for row in range(1, self.rows):
+                for col in [j for j in range(self.columns) if j < row]:
+                    if matrix[row][col] > 0:
                         return False
             return True
+
+        elif method == "upper":
+            for col in range(1, self.columns):
+                for row in [j for j in range(self.rows) if j < col]:
+                    if matrix[row][col] > 0:
+                        return False
+            return True
+
+    def transpose(self):
+        matrix = self.create_matrix()
+        if len(matrix) != len(matrix[0]):
+            return "Not a square matrix"
+
+        else:
+            transpose = []
+            for col in range(self.columns):
+                temp_list = []
+                for row in range(self.rows):
+                    temp_list.append(matrix[row][col])
+                transpose.append(temp_list)
+            return transpose
 
     def make_triangular(self):
         pass
