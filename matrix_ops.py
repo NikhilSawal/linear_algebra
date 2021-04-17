@@ -34,7 +34,7 @@ class Matrix:
         of n_rows and n_columns.
         '''
         if self.rows * self.columns != len(self.array):
-            return "invalid input"
+            return 'invalid input'
 
         elif self.rows != self.columns:
             # If matrix is not square
@@ -42,7 +42,7 @@ class Matrix:
             for i in range(self.rows):
                 temp_list = []
                 for j in range(self.columns):
-                    temp_list.append(self.array[self.columns * i + j])
+                    temp_list.append(float(self.array[self.columns * i + j]))
                 matrix.append(temp_list)
             return matrix
 
@@ -52,7 +52,7 @@ class Matrix:
             for i in range(self.rows):
                 temp_list = []
                 for j in range(self.columns):
-                    temp_list.append(self.array[self.rows * i + j])
+                    temp_list.append(float(self.array[self.rows * i + j]))
                 matrix.append(temp_list)
             return matrix
 
@@ -88,16 +88,16 @@ class Matrix:
         '''
         matrix = self.create_matrix()
         if len(matrix) != len(matrix[0]):
-            return "Not a square matrix"
+            return 'Not a square matrix'
 
-        elif method == "lower":
+        elif method == 'lower':
             for row in range(1, self.rows):
                 for col in [j for j in range(self.columns) if j < row]:
                     if matrix[row][col] > 0:
                         return False
             return True
 
-        elif method == "upper":
+        elif method == 'upper':
             for col in range(1, self.columns):
                 for row in [j for j in range(self.rows) if j < col]:
                     if matrix[row][col] > 0:
@@ -105,9 +105,10 @@ class Matrix:
             return True
 
     def transpose(self):
+
         matrix = self.create_matrix()
         if len(matrix) != len(matrix[0]):
-            return "Not a square matrix"
+            return 'Not a square matrix'
 
         else:
             transpose = []
@@ -119,4 +120,17 @@ class Matrix:
             return transpose
 
     def make_triangular(self):
-        pass
+
+        matrix = self.create_matrix()
+        if len(matrix) != len(matrix[0]):
+            return 'Not a square matrix'
+
+        else:
+            for row in range(1, self.rows):
+                for col in [i for i in range(self.columns) if i < row]:
+                    if matrix[row][col] != 0:
+                        mul = matrix[row][col]/matrix[col][col]
+                        matrix[row] = [(a_i - (mul * b_i)) for a_i, b_i in zip(matrix[row], matrix[col])]
+                    else:
+                        pass
+            return matrix

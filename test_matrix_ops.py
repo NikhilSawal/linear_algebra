@@ -10,6 +10,9 @@ class TestMatrix(unittest.TestCase):
         self.mat_3 = Matrix([1, 3, 5, 4], 3, 3)
         self.mat_4 = Matrix([1, 2, 3, 4, 5, 6], 1, 2)
         self.mat_5 = Matrix([1, 0, 1, 1], 2, 2)
+        self.mat_6 = Matrix([1, 2, 3, 9, 5, 6, 8, 2, 9], 3, 3)
+        self.mat_7 = Matrix([1, 2, 3, 0, 5, 6, 8, 2, 9], 3, 3)
+        self.mat_8 = Matrix([1, 2, 7, 9, 5, 2, 1, 0, 0], 3, 3)
 
     def tearDown(self):
         pass
@@ -36,6 +39,12 @@ class TestMatrix(unittest.TestCase):
 
         self.assertEqual(self.mat_1.transpose(), [[-1, 3], [1, 7]])
         self.assertEqual(self.mat_2.transpose(), [[1, 0, 0], [2, 5, 0], [3, 6, 9]])
+
+    def make_triangular(self):
+
+        self.assertEqual(self.mat_6.make_triangular(), [[1.0, 2.0, 3.0], [0.0, -13.0, -21.0], [0.0, 0.0, 7.615384615384613]])
+        self.assertEqual(self.mat_7.make_triangular(), [[1.0, 2.0, 3.0], [0.0, 5.0, 6.0], [0.0, 0.0, 1.7999999999999972]])
+        self.assertEqual(self.mat_8.make_triangular(), [[1.0, 2.0, 7.0], [0.0, -13.0, -61.0], [0.0, 0.0, 2.384615384615385]])
 
 if __name__ == '__main__':
     unittest.main()
